@@ -1,5 +1,5 @@
-# JavascriptGame
-114-1 Cloud Computing Course
+# JavascriptGame B11209009 郭彩霞
+114-1 Cloud Computing Course 
 
 # Create a focus and logic game
 _Exported on 9/21/2025 at 14:41:11 GMT+8 from Cursor (1.4.5)_
