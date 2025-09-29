@@ -30,7 +30,15 @@ class ColorMemoryGame {
             { name: 'Purple', class: 'purple', gradient: 'linear-gradient(45deg, #9f7aea, #805ad5)' },
             { name: 'Pink', class: 'pink', gradient: 'linear-gradient(45deg, #ed64a6, #d53f8c)' },
             { name: 'Teal', class: 'teal', gradient: 'linear-gradient(45deg, #38b2ac, #319795)' },
-            { name: 'Orange', class: 'orange', gradient: 'linear-gradient(45deg, #f6ad55, #ed8936)' }
+            { name: 'Orange', class: 'orange', gradient: 'linear-gradient(45deg, #f6ad55, #ed8936)' },
+            { name: 'Cyan', class: 'cyan', gradient: 'linear-gradient(45deg, #06b6d4, #0891b2)' },
+            { name: 'Lime', class: 'lime', gradient: 'linear-gradient(45deg, #84cc16, #65a30d)' },
+            { name: 'Indigo', class: 'indigo', gradient: 'linear-gradient(45deg, #6366f1, #4f46e5)' },
+            { name: 'Amber', class: 'amber', gradient: 'linear-gradient(45deg, #f59e0b, #d97706)' },
+            { name: 'Rose', class: 'rose', gradient: 'linear-gradient(45deg, #fb7185, #f43f5e)' },
+            { name: 'Slate', class: 'slate', gradient: 'linear-gradient(45deg, #94a3b8, #64748b)' },
+            { name: 'Emerald', class: 'emerald', gradient: 'linear-gradient(45deg, #10b981, #059669)' },
+            { name: 'Violet', class: 'violet', gradient: 'linear-gradient(45deg, #8b5cf6, #7c3aed)' }
         ];
         
         this.initializeGame();
@@ -133,6 +141,13 @@ class ColorMemoryGame {
         for (let i = 0; i < this.sequence.length; i++) {
             const tileIndex = this.sequence[i];
             const tile = tiles[tileIndex];
+            if (!tile) {
+                // If the tile doesn't exist (safety), regenerate board and abort this display
+                this.generateBoard();
+                this.showingSequence = false;
+                tiles.forEach(t => t.classList.remove('disabled'));
+                return;
+            }
             
             // Highlight the tile
             tile.classList.add('active');
