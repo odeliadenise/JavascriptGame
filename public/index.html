@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Memory Match - Focus & Logic Training</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Color Memory Match</h1>
+            <p>Train your focus and logic with this memory game!</p>
+        </header>
+        
+        <div class="game-info">
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Level:</span>
+                    <span id="level">1</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Lives:</span>
+                    <span id="lives">3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="game-board" id="gameBoard">
+                <!-- Game tiles will be generated here -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn primary">Start Game</button>
+            <button id="resetBtn" class="btn secondary">Reset</button>
+            <button id="hintBtn" class="btn hint">Hint (3)</button>
+        </div>
+
+        <div class="difficulty-selector">
+            <h3>Choose Difficulty:</h3>
+            <div class="difficulty-options">
+                <button class="difficulty-btn active" data-difficulty="easy">Easy (2x2)</button>
+                <button class="difficulty-btn" data-difficulty="medium">Medium (3x3)</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard (4x4)</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Play:</h3>
+            <ul>
+                <li>🎯 Watch the pattern of colored tiles that light up</li>
+                <li>🧠 Remember the sequence and click the tiles in the same order</li>
+                <li>⚡ Complete each level to advance and increase difficulty</li>
+                <li>💡 Use hints if you get stuck (limited uses per game)</li>
+                <li>🏆 Try to get the highest score possible!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2 id="gameOverTitle">Game Over!</h2>
+            <p id="gameOverMessage">Your final score: <span id="finalScore">0</span></p>
+            <button id="playAgainBtn" class="btn primary">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
