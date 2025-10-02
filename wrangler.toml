@@ -1,4 +1,4 @@
-name = "dont_blink"
+name = "dont-blink"
 main = "src/worker.js"
 compatibility_date = "2025-10-01"
 
