@@ -134,10 +134,8 @@ class ColorMemoryGame {
     async showSequence() {
         this.showingSequence = true;
         const tiles = this.gameBoard.querySelectorAll('.tile');
-        
         // Disable all tiles during sequence display
         tiles.forEach(tile => tile.classList.add('disabled'));
-        
         for (let i = 0; i < this.sequence.length; i++) {
             const tileIndex = this.sequence[i];
             const tile = tiles[tileIndex];
@@ -148,16 +146,12 @@ class ColorMemoryGame {
                 tiles.forEach(t => t.classList.remove('disabled'));
                 return;
             }
-            
-            // Highlight the tile
+            // Highlight the tile with a much longer and brighter glow
             tile.classList.add('active');
-            await this.delay(600);
-            
-            // Remove highlight
+            await this.delay(900);
             tile.classList.remove('active');
             await this.delay(200);
         }
-        
         // Re-enable tiles for player input
         tiles.forEach(tile => tile.classList.remove('disabled'));
         this.showingSequence = false;
@@ -165,23 +159,17 @@ class ColorMemoryGame {
     
     handleTileClick(tileIndex) {
         if (!this.gameActive || this.showingSequence) return;
-        
         const tiles = this.gameBoard.querySelectorAll('.tile');
         const tile = tiles[tileIndex];
-        
-        // Add visual feedback
+        // Add visual feedback with a much longer and brighter glow
         tile.classList.add('active');
-        setTimeout(() => tile.classList.remove('active'), 200);
-        
+        setTimeout(() => tile.classList.remove('active'), 400);
         this.playerSequence.push(tileIndex);
-        
         // Check if the move is correct
         if (this.playerSequence[this.currentStep] === this.sequence[this.currentStep]) {
             tile.classList.add('correct');
             setTimeout(() => tile.classList.remove('correct'), 300);
-            
             this.currentStep++;
-            
             // Check if sequence is complete
             if (this.currentStep === this.sequence.length) {
                 this.levelComplete();
@@ -230,22 +218,17 @@ class ColorMemoryGame {
     
     useHint() {
         if (this.hints <= 0 || !this.gameActive || this.showingSequence) return;
-        
         this.hints--;
         this.hintBtn.textContent = `Hint (${this.hints})`;
-        
         if (this.hints <= 0) {
             this.hintBtn.disabled = true;
         }
-        
-        // Show the next correct tile
+        // Show the next correct tile with a much longer and brighter glow
         const nextCorrectIndex = this.sequence[this.currentStep];
         const tiles = this.gameBoard.querySelectorAll('.tile');
         const correctTile = tiles[nextCorrectIndex];
-        
         correctTile.classList.add('active');
-        setTimeout(() => correctTile.classList.remove('active'), 1000);
-        
+        setTimeout(() => correctTile.classList.remove('active'), 700);
         this.showMessage('Hint used! 💡', 'info');
     }
     
